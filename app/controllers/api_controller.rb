@@ -22,13 +22,13 @@ class ApiController < ApplicationController
         Rails.logger.info ret
         ret = Oj.load(ret).deep_stringify_keys
         Rails.logger.info ret
-        render json: Oj.dump(ret)
+        render json: Oj.dump(ret)    
     end 
 
     def add_equipment
         Rails.logger.info '[POST] 127.0.0.1:3005/api/equipment'
         
-        ret = RestClient.post '127.0.0.1:3005/api/equipment', {params: {id: params[:id], name: params[:name], description: params[:description], images: params[:images]}}
+        ret = RestClient.post '127.0.0.1:3005/api/equipment', {name: params[:name], description: params[:description], images: params[:images]}
         Rails.logger.info ret
         ret = Oj.load(ret).deep_stringify_keys
         Rails.logger.info ret
@@ -38,17 +38,7 @@ class ApiController < ApplicationController
     def update_equipment
         Rails.logger.info '[PUT] 127.0.0.1:3005/api/equipment/:id'
 
-        ret = RestClient.put ('127.0.0.1:3005/api/equipment/' + params[:id]), {params: {name: params[:name], description: params[:description], images: params[:images]}}
-        Rails.logger.info ret
-        ret = Oj.load(ret).deep_stringify_keys
-        Rails.logger.info ret
-        render json: Oj.dump(ret)
-    end
-
-    def restful_call method, host, payload, header
-        Rails.logger.info '[PUT] 127.0.0.1:3005/api/equipment/:id'
-
-        ret = RestClient.put '127.0.0.1:3005/api/equipment/:id', {params: {id: :id, name: :name, description: :description, images: :images}}
+        ret = RestClient.put ('127.0.0.1:3005/api/equipment/' + params[:id]), {name: params[:name], description: params[:description], images: params[:images]}
         Rails.logger.info ret
         ret = Oj.load(ret).deep_stringify_keys
         Rails.logger.info ret

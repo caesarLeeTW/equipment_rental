@@ -1,23 +1,24 @@
 <template>
-    <div>
-        <Header></Header>
+  <div>
+    <Header></Header>
 
-        <h1>[Vue] equipment rental</h1>
-    </div>
+    <h1>[Vue] equipment rental</h1>
+  </div>
 </template>
 
 <script>
-import Header from './components/header'
+import Header from "./components/header";
+import axios from "axios";
 
 export default {
-    components: {
-        Header,
-    }
-}
+  components: {
+    Header,
+  },
+};
 </script>
 
-<style >
-    body {
-        background-color: #E1E2E1;
-    }
+<style lang="scss">
+body {
+  background-color: #e1e2e1;
+}
 </style>
